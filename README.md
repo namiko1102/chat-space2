@@ -8,4 +8,4 @@
 ### Association
 - bas_many :groups, through: members
 - bas_many :messages
-- bas_many :messages
+- bas_many :members
