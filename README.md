@@ -10,15 +10,24 @@
 - bas_many :messages
 - bas_many :members
 
-
 ## messagesテーブル
-
 |Column|Type|Options|
 |------|----|-------|
-|body|text|null: false|
-|image|string|null: false|
+|image|text||
+|text|text||
 |user_id|integer|null: false, foreign_key: true|
-|group_id|integer|null: false, foreign_key: true|
+
 ### Association
-- belongs_to :post
+- belongs_to :user
+- has_many :comments
+
+## commentsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|text|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|messages_id|integer|null: false, foreign_key: true|
+
+### Association
+- belongs_to :messages
 - belongs_to :user
