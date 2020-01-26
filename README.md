@@ -11,6 +11,19 @@
 - has_many :messages
 - has_many :members
 
+## groupsテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|name|string|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+
+### Association
+
+- has_many :messages
+- has_many :members
+
 ## groups_usersテーブル
 
 |Column|Type|Options|
