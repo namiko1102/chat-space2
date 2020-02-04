@@ -1,17 +1,17 @@
-%div.chat-main
- %div.main-header
-  %div.main-header__left-box
+.chat-main
+ .main-header
+  .main-header__left-box
    %h2(class="main-header__left-box__current-group" data-group_id="16370")
     test
    %ul(class="main-header__left-box__member-list")
     Member：
     %li(class="main-header__left-box__member-list__member")<masa
   %a(href="/groups/16370/edit")
-   %div.main-header__edit-btn>Edit
+   .main-header__edit-btn>Edit
  
- %div.messages
+ .messages
   
- %div.form
+ .form
   %form(class="new_message" id="new_message" enctype="multipart/form-data" action="/groups/16370/messages" accept-charset="UTF-8" method="post")
    %input(name="utf8" type="hidden" value="✔︎")
    %div(class="input-box")
