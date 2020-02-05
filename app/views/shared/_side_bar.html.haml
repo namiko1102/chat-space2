@@ -6,9 +6,11 @@
       %ul.side-header__box__menu
         %li.side-header__box__menu__new-group
         %a(href="/groups/new")
+        = link_to root_path, class: 'link' do
           %i(class="fa fa-edit")
         %li(class="side-header__box__menu__edit-user")
         %a(href="/users/11900/edit")
+        = link_to root_path, class: 'link' do
           %i(class="fa fa-cog")
    
 

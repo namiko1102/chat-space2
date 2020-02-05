@@ -16,6 +16,12 @@
     justify-content: space-between;
     width: 100%;
     font-weight: bold;
+    &___box__{
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      font-weight: bold;
+    }
   }
 
   .side-header {
@@ -24,13 +30,6 @@
     display: flex;
     align-items: center;
     padding: 0 20px;
-  }
-
-  .side-header__box {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    font-weight: bold;
   }
 }
 
@@ -227,16 +226,15 @@ h1, h2, h3, h4, h5, h6 {
 
 input, textarea, select {
   *font-size: 100%;
+  &___box__{
+    *font-size: 100%;
+  }
 }
 
 .chat-main .form {
   height: 90px;
   padding: 20px 40px;
   background-color: #ddd;
-}
-
-input, textarea, select {
-  *font-size: 100%;
 }
 
 .chat-main .form form {
@@ -278,12 +276,11 @@ input, textarea, select {
 
 input, textarea, select {
   *font-size: 100%;
-}
-
-input, textarea, select {
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  &___box__{
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+  }
 }
 
 .chat-main .form {
