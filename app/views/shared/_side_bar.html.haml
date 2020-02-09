@@ -1,21 +1,20 @@
 .chat-side
   .side-header
     .side-header__box
-      %p.side-header__box__user-name<masa
+      %h3.side-header__name
+        = current_user.name
       %ul.side-header__box__menu
-        %li.side-header__box__menu__new-group
-        %a(href="/groups/new")
-        = link_to root_path, class: 'link' do
-          %i(class="fa fa-edit")
+        %li(class="side-header__box__menu__new-group")
+        = link_to new_group_path do
+          = icon('fas', 'pen-square', class: 'icon')
         %li(class="side-header__box__menu__edit-user")
-        %a(href="/users/11900/edit")
-        = link_to root_path, class: 'link' do
-          %i(class="fa fa-cog")
+        = link_to edit_user_path(current_user) do
+          = icon('fas', 'cog', class: 'icon')
   .groups
-    %a(href="/groups/16121/messages")
-    = link_to root_path, class: 'link' do
-      techcamp
-      %p まだメッセージはありません
-    .group
-      %p(class="group-name")
-      %p(class="group__latest-message")
+    - current_user.groups.each do |group|
+      .group
+        = link_to group_messages_path(group) do
+          .group__name
+            = group.name
+          .group__message
+            = group.show_last_message
