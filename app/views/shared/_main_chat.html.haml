@@ -1,21 +1,21 @@
 .chat-main
  .main-header
   .main-header__left-box
-   %h2(class="main-header__left-box__current-group" data-group_id="16370")
-    test
+   %h3(class="main-header__left-box__current-group")
+    = current_user.groups.name
    %ul(class="main-header__left-box__member-list")
     Member：
-    %li(class="main-header__left-box__member-list__member")<masa
-  %a(href="/groups/16370/edit")
-  = link_to root_path, class: 'link' do
+    %li(class="main-header__left-box__member-list__member")
+     = current_user.name
+  = link_to edit_group_path(current_user) do
    .main-header__edit-btn>Edit
  .messages
+  = render @messages
  .form
-  %form(class="new_message" id="new_message" enctype="multipart/form-data" action="/groups/16370/messages" accept-charset="UTF-8" method="post")
-   %input(name="utf8" type="hidden" value="✔︎")
-   %div(class="input-box")
-    %input(placeholder="type a message" class="input-box__text" type="text" name="message[content]" id="message_content")
-    %label(class="input-box__image" for="message_image")
-     %i(class="fa fa-image")
-     %input(class="input-box__image__file" type="file" name="message[image]" id="message_image")
-   %input(type="submit" name="commit" value="Send" class="submit-btn" data-disable-with="Send")
+  = form_for [@group, @message] do |f|
+   = f.text_field :content, class: 'form__message', placeholder: 'type a message'
+   .form__mask
+    = f.label :image, class: 'form__mask__image' do
+     = icon('fas', 'image', class: 'icon')
+     = f.file_field :image, class: 'hidden'
+     = f.submit 'Send', class: 'form__submit'
