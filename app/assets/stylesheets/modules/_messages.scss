@@ -7,6 +7,7 @@
   color: white;
   float: left;
 
+    
   .side-header__box__menu {
     display: flex;
   }
@@ -54,6 +55,7 @@
     .group {
       margin-bottom: 40px;
       &__name {
+        color: white;
         font-size: 15px;
         margin-bottom: 5px;
       }
