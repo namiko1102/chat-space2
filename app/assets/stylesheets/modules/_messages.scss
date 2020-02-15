@@ -7,6 +7,7 @@
   color: white;
   float: left;
 
+    
   .side-header__box__menu {
     display: flex;
   }
@@ -54,6 +55,7 @@
     .group {
       margin-bottom: 40px;
       &__name {
+        color: white;
         font-size: 15px;
         margin-bottom: 5px;
       }
@@ -159,28 +161,27 @@
       width: calc(100% - 150px);
     }
     &__mask {
-      background-color: $white;
-      float: left;
       height: 50px;
-      padding-right: 10px;
+      width: 100%;
+      padding: 0 40px 0 10px;
+      color: #434a54;
+      border-style: none;
       &__image {
-        font-size: 20px;
-        line-height: 50px;
+        font-size: 1.3rem;
+        position: absolute;
         cursor: pointer;
       }
       .hidden {
         display: none;
       }
     }
-    &__submit {
-      background-color: #38AEF0;
-      border: none;
-      color: #fff;
-      float: right;
-      font-size: 16px;
+    &__submit-btn {
+      width: 100px;
       height: 50px;
-      margin-left: 15px;
       padding: 0 30px;
+      margin-left: 15px;
+      background-color: #38aef0;
+      color: white;
       cursor: pointer;
     }
   }
