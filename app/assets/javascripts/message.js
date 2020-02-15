@@ -1,4 +1,6 @@
 $(function(){
+  last_message_id = $('.message:last').data("message-id");
+  console.log(last_message_id);
   function buildHTML(message){
     if ( message.image ) {
       var html =
@@ -52,13 +54,18 @@ $(function(){
       contentType: false
     })
      .done(function(data){
-       var html = buildHTML(data);
-       $('.messages').append(html);      
-       $('form')[0].reset();
-       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight}, "fast");
-     })
-     .fail(function(){
+       if (messages.length !== 0) {
+        var insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.messages').append(insertHTML);
+        $('form')[0].reset();
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      }
+    })
+    .fail(function(){
       alert("メッセージ送信に失敗しました");
-     });
+    });
   });
 });
