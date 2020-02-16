@@ -1,4 +1,5 @@
 $(function(){
+  
   function buildHTML(message){
     if ( message.image ) {
       var html =
@@ -52,13 +53,46 @@ $(function(){
       contentType: false
     })
      .done(function(data){
-       var html = buildHTML(data);
-       $('.messages').append(html);      
-       $('form')[0].reset();
-       $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight}, "fast");
-     })
-     .fail(function(){
+        const insertHTML = buildHTML(data);
+        if (data.length !== 0) {
+        $('.messages').append(insertHTML);
+        $('form')[0].reset();
+        $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight});
+      }
+    })
+    .fail(function(){
       alert("メッセージ送信に失敗しました");
-     });
+    });
+  });
+
+  var reloadMessages = function() {
+    var last_message_id = $('.message:last').data('id');
+    $.ajax({
+      url: 'api/messages',
+      type: 'get',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      messages.forEach(function(message){
+
+        if(message.id > last_message_id){
+        insertHTML += buildHTML(message);
+        }
+      })
+      $('.messages').append(insertHTML);
+      var height = $('.messages')[0].scrollHeight;
+      $('.messages').animate({scrollTop: height}, 500, 'swing');
+    })
+    .fail(function() {
+      alert('reloadMessageError');
+    });
+  };
+
+  $(window).on('load',function(){
+    if(document.URL.match("messages")) {
+      setInterval(reloadMessages, 7000);
+    }
   });
 });
