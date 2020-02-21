@@ -2,103 +2,59 @@
       Uploading config/secrets.yml 100.0%
 00:00 git:wrapper
       01 mkdir -p /tmp
-    ✔ 01 ec2-user@18.180.24.33 0.083s
-      Uploading /tmp/git-ssh-chat-space-production-maedanamiko.sh 100.0%
-      02 chmod 700 /tmp/git-ssh-chat-space-production-maedanamiko.sh
-    ✔ 02 ec2-user@18.180.24.33 0.084s
-00:03 git:check
+    ✔ 01 ec2-user@18.180.24.33 0.237s
+      Uploading /tmp/git-ssh-chat-space2-production-maedanamiko.sh 100.0%
+      02 chmod 700 /tmp/git-ssh-chat-space2-production-maedanamiko.sh
+    ✔ 02 ec2-user@18.180.24.33 0.263s
+00:04 git:check
       01 git ls-remote git@github.com:namiko1102/chat-space2.git HEAD
-      01 49586e6b69046a008dba09e8afe16cc4bf98a88b	HEAD
-    ✔ 01 ec2-user@18.180.24.33 1.798s
-00:08 deploy:check:directories
-      01 mkdir -p /var/www/chat-space/shared /var/www/chat-space/releases
-    ✔ 01 ec2-user@18.180.24.33 0.032s
-00:08 deploy:check:linked_dirs
-      01 mkdir -p /var/www/chat-space/shared/log /var/www/chat-space/shared/tmp/pids /var/www/chat-space/shared/tmp/cache /var/www/chat-space/shared/tmp/sockets /var/www/chat-space/shared/vendor/bundle /var/www/chat-space/shared/public/system /var/www/chat-space/shared/public/uploads /var/www/chat-space/shared/public/assets
-    ✔ 01 ec2-user@18.180.24.33 0.079s
-00:08 git:clone
-      The repository mirror is at /var/www/chat-space/repo
-00:11 git:update
+      01 eca1fd697a662478e60d435e2f19ba6fed815a97	HEAD
+    ✔ 01 ec2-user@18.180.24.33 2.179s
+00:09 deploy:check:directories
+      01 mkdir -p /var/www/chat-space2/shared /var/www/chat-space2/releases
+    ✔ 01 ec2-user@18.180.24.33 0.132s
+00:09 deploy:check:linked_dirs
+      01 mkdir -p /var/www/chat-space2/shared/log /var/www/chat-space2/shared/tmp/pids /var/www/chat-space2/shared/tmp/cache /var/www/chat-space2/shared/tmp/sockets /var/www/chat-space2/shared/vendor/bundle /var/www/chat-space2/shared/public/system /var/www/chat-space2/shared/public/uploads /var/www/chat-space2/shared/public/assets
+    ✔ 01 ec2-user@18.180.24.33 0.235s
+00:09 deploy:check:make_linked_dirs
+      01 mkdir -p /var/www/chat-space2/shared/config
+    ✔ 01 ec2-user@18.180.24.33 0.224s
+00:11 git:clone
+      The repository mirror is at /var/www/chat-space2/repo
+00:14 git:update
       01 git remote set-url origin git@github.com:namiko1102/chat-space2.git
-    ✔ 01 ec2-user@18.180.24.33 0.080s
+    ✔ 01 ec2-user@18.180.24.33 0.231s
       02 git remote update --prune
       02 Fetching origin
-    ✔ 02 ec2-user@18.180.24.33 1.896s
-00:16 git:create_release
-      01 mkdir -p /var/www/chat-space/releases/20200220100843
-    ✔ 01 ec2-user@18.180.24.33 0.087s
-      02 git archive master | /usr/bin/env tar -x -f - -C /var/www/chat-space/releases/20200220100843
-    ✔ 02 ec2-user@18.180.24.33 0.089s
-00:22 deploy:set_current_revision
-      01 echo "49586e6b69046a008dba09e8afe16cc4bf98a88b" > REVISION
-    ✔ 01 ec2-user@18.180.24.33 0.081s
-00:22 deploy:symlink:linked_dirs
-      01 mkdir -p /var/www/chat-space/releases/20200220100843 /var/www/chat-space/releases/20200220100843/tmp /var/www/chat-space/releases/20200220100843/vendor /var/www/chat-space/releases/20200220100843/public
-    ✔ 01 ec2-user@18.180.24.33 0.081s
-      02 rm -rf /var/www/chat-space/releases/20200220100843/log
-    ✔ 02 ec2-user@18.180.24.33 0.079s
-      03 ln -s /var/www/chat-space/shared/log /var/www/chat-space/releases/20200220100843/log
-    ✔ 03 ec2-user@18.180.24.33 0.084s
-      04 ln -s /var/www/chat-space/shared/tmp/pids /var/www/chat-space/releases/20200220100843/tmp/pids
-    ✔ 04 ec2-user@18.180.24.33 0.077s
-      05 ln -s /var/www/chat-space/shared/tmp/cache /var/www/chat-space/releases/20200220100843/tmp/cache
-    ✔ 05 ec2-user@18.180.24.33 0.076s
-      06 ln -s /var/www/chat-space/shared/tmp/sockets /var/www/chat-space/releases/20200220100843/tmp/sockets
-    ✔ 06 ec2-user@18.180.24.33 0.083s
-      07 ln -s /var/www/chat-space/shared/vendor/bundle /var/www/chat-space/releases/20200220100843/vendor/bundle
-    ✔ 07 ec2-user@18.180.24.33 0.083s
-      08 ln -s /var/www/chat-space/shared/public/system /var/www/chat-space/releases/20200220100843/public/system
-    ✔ 08 ec2-user@18.180.24.33 0.096s
-      09 ln -s /var/www/chat-space/shared/public/uploads /var/www/chat-space/releases/20200220100843/public/uploads
-    ✔ 09 ec2-user@18.180.24.33 0.103s
-      10 ln -s /var/www/chat-space/shared/public/assets /var/www/chat-space/releases/20200220100843/public/assets
-    ✔ 10 ec2-user@18.180.24.33 0.079s
-00:25 bundler:install
-      01 $HOME/.rbenv/bin/rbenv exec bundle install --path /var/www/chat-space/shared/bundle --jobs 4 --without development test --deployment --quiet
-    ✔ 01 ec2-user@18.180.24.33 0.604s
-00:26 deploy:assets:precompile
-      01 $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile
-      01 rake aborted!
-      01 Devise.secret_key was not set. Please add the following to your Devise initializer:
-      01 
-      01   config.secret_key = '00acae8b71f3c5080670e562a61e7c2cdba2ccbd3d840c8d8026014f34cd9f4ac3c6f47c30a956fc24c49d3d0bdd1a6771322977a57ad7d54da29bd3aba434a8'
-      01 
-      01 Please ensure you restarted your application after installing Devise or setting the key.
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/devise-4.7.1/lib/devise/rails/routes.rb:500:in `raise_no_secret_key'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/devise-4.7.1/lib/devise/rails/routes.rb:228:in `devise_for'
-      01 /var/www/chat-space/releases/20200220100843/config/routes.rb:2:in `block in <top (required)>'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/actionpack-5.0.7.2/lib/action_dispatch/routing/route_set.rb:391:in `instance_exec'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/actionpack-5.0.7.2/lib/action_dispatch/routing/route_set.rb:391:in `eval_block'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/actionpack-5.0.7.2/lib/action_dispatch/routing/route_set.rb:373:in `draw'
-      01 /var/www/chat-space/releases/20200220100843/config/routes.rb:1:in `<top (required)>'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:287:in `load'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:287:in `block in load'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:259:in `load_dependency'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:287:in `load'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/routes_reloader.rb:40:in `block in load_paths'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/routes_reloader.rb:40:in `each'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/routes_reloader.rb:40:in `load_paths'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/routes_reloader.rb:16:in `reload!'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/routes_reloader.rb:26:in `block in updater'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/file_update_checker.rb:77:in `execute'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/routes_reloader.rb:27:in `updater'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/routes_reloader.rb:7:in `execute_if_updated'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application/finisher.rb:119:in `block in <module:Finisher>'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/initializable.rb:30:in `instance_exec'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/initializable.rb:30:in `run'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/initializable.rb:55:in `block in run_initializers'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/initializable.rb:54:in `run_initializers'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application.rb:352:in `initialize!'
-      01 /var/www/chat-space/releases/20200220100843/config/environment.rb:5:in `<top (required)>'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:293:in `require'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:293:in `block in require'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:259:in `load_dependency'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/activesupport-5.0.7.2/lib/active_support/dependencies.rb:293:in `require'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application.rb:328:in `require_environment!'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/railties-5.0.7.2/lib/rails/application.rb:448:in `block in run_tasks_blocks'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/sprockets-rails-3.2.1/lib/sprockets/rails/task.rb:62:in `block (2 levels) in define'
-      01 /var/www/chat-space/shared/bundle/ruby/2.5.0/gems/rake-13.0.1/exe/rake:27:in `<top (required)>'
-      01 /home/ec2-user/.rbenv/versions/2.5.1/bin/bundle:23:in `load'
-      01 /home/ec2-user/.rbenv/versions/2.5.1/bin/bundle:23:in `<main>'
-      01 Tasks: TOP => environment
-      01 (See full trace by running task with --trace)
+    ✔ 02 ec2-user@18.180.24.33 2.133s
+00:19 git:create_release
+      01 mkdir -p /var/www/chat-space2/releases/20200221145410
+    ✔ 01 ec2-user@18.180.24.33 0.261s
+      02 git archive master | /usr/bin/env tar -x -f - -C /var/www/chat-space2/releases/20200221145410
+    ✔ 02 ec2-user@18.180.24.33 0.255s
+00:26 deploy:set_current_revision
+      01 echo "eca1fd697a662478e60d435e2f19ba6fed815a97" > REVISION
+    ✔ 01 ec2-user@18.180.24.33 0.231s
+00:27 deploy:symlink:linked_files
+      01 mkdir -p /var/www/chat-space2/releases/20200221145410/config
+    ✔ 01 ec2-user@18.180.24.33 0.228s
+      02 ln -s /var/www/chat-space2/shared/config/secrets.yml /var/www/chat-space2/releases/20200221145410/config/secrets.yml
+    ✔ 02 ec2-user@18.180.24.33 0.224s
+00:27 deploy:symlink:linked_dirs
+      01 mkdir -p /var/www/chat-space2/releases/20200221145410 /var/www/chat-space2/releases/20200221145410/tmp /var/www/chat-space2/releases/20200221145410/vendor /var/www/chat-space2/releases/20200221145410/public
+    ✔ 01 ec2-user@18.180.24.33 0.245s
+      02 rm -rf /var/www/chat-space2/releases/20200221145410/log
+    ✔ 02 ec2-user@18.180.24.33 0.225s
+      03 ln -s /var/www/chat-space2/shared/log /var/www/chat-space2/releases/20200221145410/log
+    ✔ 03 ec2-user@18.180.24.33 0.234s
+      04 ln -s /var/www/chat-space2/shared/tmp/pids /var/www/chat-space2/releases/20200221145410/tmp/pids
+    ✔ 04 ec2-user@18.180.24.33 0.229s
+      05 ln -s /var/www/chat-space2/shared/tmp/cache /var/www/chat-space2/releases/20200221145410/tmp/cache
+    ✔ 05 ec2-user@18.180.24.33 0.228s
+      06 ln -s /var/www/chat-space2/shared/tmp/sockets /var/www/chat-space2/releases/20200221145410/tmp/sockets
+    ✔ 06 ec2-user@18.180.24.33 0.261s
+      07 ln -s /var/www/chat-space2/shared/vendor/bundle /var/www/chat-space2/releases/20200221145410/vendor/bundle
+    ✔ 07 ec2-user@18.180.24.33 0.242s
+      08 ln -s /var/www/chat-space2/shared/public/system /var/www/chat-space2/releases/20200221145410/public/system
+    ✔ 08 ec2-user@18.180.24.33 0.242s
+      09 ln -s /var/www/chat-space2/shared/public/uploads /var/www/chat-space2/releases/20200221145410/public/uploads
