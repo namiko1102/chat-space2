@@ -158,7 +158,7 @@
       border: none;
       float: left;
       height: 50px;
-      width: calc(100% - 150px);
+      width: calc(100% - 85px);
     }
     &__mask {
       height: 50px;
@@ -169,6 +169,7 @@
       &__image {
         font-size: 1.3rem;
         position: absolute;
+        right: 25px;
         cursor: pointer;
       }
       .hidden {
