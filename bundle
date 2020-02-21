@@ -58,3 +58,39 @@
       08 ln -s /var/www/chat-space2/shared/public/system /var/www/chat-space2/releases/20200221145410/public/system
     ✔ 08 ec2-user@18.180.24.33 0.242s
       09 ln -s /var/www/chat-space2/shared/public/uploads /var/www/chat-space2/releases/20200221145410/public/uploads
+    ✔ 09 ec2-user@18.180.24.33 0.261s
+      10 ln -s /var/www/chat-space2/shared/public/assets /var/www/chat-space2/releases/20200221145410/public/assets
+    ✔ 10 ec2-user@18.180.24.33 0.234s
+00:34 bundler:install
+      01 $HOME/.rbenv/bin/rbenv exec bundle install --path /var/www/chat-space2/shared/bundle --jobs 4 --without development test --deployment --quiet
+    ✔ 01 ec2-user@18.180.24.33 0.676s
+00:35 deploy:assets:precompile
+      01 $HOME/.rbenv/bin/rbenv exec bundle exec rake assets:precompile
+    ✔ 01 ec2-user@18.180.24.33 2.523s
+00:38 deploy:assets:backup_manifest
+      01 mkdir -p /var/www/chat-space2/releases/20200221145410/assets_manifest_backup
+    ✔ 01 ec2-user@18.180.24.33 0.243s
+      02 cp /var/www/chat-space2/releases/20200221145410/public/assets/.sprockets-manifest-e1a3d389cfeac03a24c5525241cd4a9d.json /var/www/chat-space2/releases/20200221145410/assets_manifest_backup
+    ✔ 02 ec2-user@18.180.24.33 0.250s
+00:39 deploy:migrate
+      [deploy:migrate] Run `rake db:migrate`
+00:39 deploy:migrating
+      01 $HOME/.rbenv/bin/rbenv exec bundle exec rake db:migrate
+    ✔ 01 ec2-user@18.180.24.33 2.426s
+00:42 deploy:symlink:release
+      01 ln -s /var/www/chat-space2/releases/20200221145410 /var/www/chat-space2/releases/current
+    ✔ 01 ec2-user@18.180.24.33 0.249s
+      02 mv /var/www/chat-space2/releases/current /var/www/chat-space2
+    ✔ 02 ec2-user@18.180.24.33 0.260s
+00:43 unicorn:start
+      unicorn is running...
+      unicorn restarting...
+      01 kill -s USR2 `cat /var/www/chat-space2/shared/tmp/pids/unicorn.pid`
+    ✔ 01 ec2-user@18.180.24.33 0.257s
+00:44 deploy:cleanup
+      Keeping 5 of 6 deployed releases on 18.180.24.33
+      01 rm -rf /var/www/chat-space2/releases/20200220114614
+    ✔ 01 ec2-user@18.180.24.33 0.335s
+00:45 deploy:log_revision
+      01 echo "Branch master (at eca1fd697a662478e60d435e2f19ba6fed815a97) deployed as release 20200221145410 by maedanamiko" >> /var/www/chat-space2/revisions.log
+    ✔ 01 ec2-user@18.180.24.33 0.293s
